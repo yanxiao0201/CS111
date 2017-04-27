@@ -1,0 +1,8 @@
+Readme:
+1) Source code: lab3b.py
+2) In makefile, we have serveral command options:
+	default:run the python code and generate the list called lab3b_check.txt
+	run: same as default
+	test: if the reference file is called new_lab3b_check.txt, then this command sort both the reference file and the lab3b_check.txt we generated, and do diff on the sorted files, and do wc on the results after diff.
+	dist: generate the tarball
+	clean: clean all the files generated from the program

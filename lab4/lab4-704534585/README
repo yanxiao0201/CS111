@@ -1,0 +1,8 @@
+1) lab4a.c: files for first part
+2) lab4b.c: files for second part, no DISPLAY mode
+3) lcd.c lcd.h: library files for the extra credit. I have managed to show the temperature
+   on the lcd. The library files were originally found on line and I modified them.
+   So in order for the extra credit requirements, lab4a.c and lcd.c have to compile togehter
+
+4) lab4a is the executable for part1, lab4b is the executable for part2
+5) I have no time to implement the extra credit for part2. But it should be easy

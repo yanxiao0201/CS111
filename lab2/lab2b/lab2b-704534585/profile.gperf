@@ -1,0 +1,81 @@
+Total: 36 samples
+      28  77.8%  77.8%       36 100.0% list_spin_lock
+       7  19.4%  97.2%        7  19.4% __strcmp_sse42
+       1   2.8% 100.0%        5  13.9% SortedList_lookup
+       0   0.0% 100.0%        3   8.3% SortedList_insert
+       0   0.0% 100.0%       36 100.0% __clone
+       0   0.0% 100.0%       36 100.0% start_thread
+ROUTINE ====================== list_spin_lock in /u/eng/class/classxya/Desktop/cs111/lab2b/lab2_list.c
+    28     36 Total samples (flat / cumulative)
+     .      .  263:     }
+     .      .  264:     pthread_mutex_unlock(&mutexlist);
+     .      .  265:     return NULL;
+     .      .  266: }
+     .      .  267: 
+---
+     .      .  268: void *list_spin_lock(void* start){
+     .      .  269:     SortedList_t* first = (SortedList_t*)start;
+     .      .  270:     SortedList_t* to_del;
+     .      .  271:     int hashkey;
+     .      .  272:     int k;
+    28     28  273:     while (__sync_lock_test_and_set(&spin_lock,1));
+     .      .  274:     for (k = 0; k < iter; k++){
+     .      .  275:         hashkey = atoi((first+k)->key)%lis;
+     .      3  276:         SortedList_insert((headlist+hashkey), first+k);
+     .      .  277:     }
+     .      .  278:     int length = 0;
+     .      .  279:     int count;
+     .      .  280:     for (count = 0; count < lis; count++){
+     .      .  281:         length = length + SortedList_length(headlist+count);
+     .      .  282:     }
+     .      .  283:     for (k = 0; k < iter; k++){
+     .      .  284:         hashkey = atoi((first+k)->key)%lis;
+     .      5  285:         to_del = SortedList_lookup((headlist+hashkey), (first+k)->key);
+     .      .  286:         SortedList_delete(to_del);
+     .      .  287:     }
+     .      .  288:     __sync_lock_release(&spin_lock);
+     .      .  289:     return NULL;
+     .      .  290: }
+---
+     .      .  291: 
+     .      .  292: struct timespec diff(struct timespec start, struct timespec end)
+     .      .  293: {
+     .      .  294:     struct timespec temp;
+     .      .  295:     if ((end.tv_nsec-start.tv_nsec)<0) {
+ROUTINE ====================== list_spin_lock in /u/eng/class/classxya/Desktop/cs111/lab2b/lab2_list.c
+    28     36 Total samples (flat / cumulative)
+     .      .  263:     }
+     .      .  264:     pthread_mutex_unlock(&mutexlist);
+     .      .  265:     return NULL;
+     .      .  266: }
+     .      .  267: 
+---
+     .      .  268: void *list_spin_lock(void* start){
+     .      .  269:     SortedList_t* first = (SortedList_t*)start;
+     .      .  270:     SortedList_t* to_del;
+     .      .  271:     int hashkey;
+     .      .  272:     int k;
+    28     28  273:     while (__sync_lock_test_and_set(&spin_lock,1));
+     .      .  274:     for (k = 0; k < iter; k++){
+     .      .  275:         hashkey = atoi((first+k)->key)%lis;
+     .      3  276:         SortedList_insert((headlist+hashkey), first+k);
+     .      .  277:     }
+     .      .  278:     int length = 0;
+     .      .  279:     int count;
+     .      .  280:     for (count = 0; count < lis; count++){
+     .      .  281:         length = length + SortedList_length(headlist+count);
+     .      .  282:     }
+     .      .  283:     for (k = 0; k < iter; k++){
+     .      .  284:         hashkey = atoi((first+k)->key)%lis;
+     .      5  285:         to_del = SortedList_lookup((headlist+hashkey), (first+k)->key);
+     .      .  286:         SortedList_delete(to_del);
+     .      .  287:     }
+     .      .  288:     __sync_lock_release(&spin_lock);
+     .      .  289:     return NULL;
+     .      .  290: }
+---
+     .      .  291: 
+     .      .  292: struct timespec diff(struct timespec start, struct timespec end)
+     .      .  293: {
+     .      .  294:     struct timespec temp;
+     .      .  295:     if ((end.tv_nsec-start.tv_nsec)<0) {

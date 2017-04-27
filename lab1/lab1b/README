@@ -1,0 +1,14 @@
+#Name: Xiao Yan
+#ID: 704534585
+
+#Based on the discussion with one of the TAs on the log and the post on piazza about project1b, I set my program such that it will read the input one-by-one, echo to the terminal, log each character as "SENT 1 byte: [a-z]", and send it to the socket. Upon receiving the results from socket, my program read the results one-by-one, send it to the terminal one-by-one, and log each character as "RECEIVED 1 byte: [a-z]". 
+
+#There should be ways to modified the log process. I will send the updates once I finish
+
+#In the encryption mode, the character is encrypted one by one using twofish algorithm and CFB mode. 
+
+#my.key is the key used for encryption. It has to be at least 20 characters.  
+#In the makefile, default will generate both executables for server.c and client.c. make client will generate client executable and make server will generate server executable.
+
+#When running the program. Make sure both executables are on the same machine. Open two terminal windows. Be sure to run the server first then the client.
+

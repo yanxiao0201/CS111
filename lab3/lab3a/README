@@ -1,0 +1,7 @@
+UID: 704534585
+Files: lab3a.c, source file for this project
+       makefile, has --default for build the program, --test to generate the csv files (if disk-image is in the same folder as the lab3a)
+
+	diff, calculate the difference between the .csv files lab3a generates, and the reference .csv files (name ends with 2), and run wc on the diff results
+	dist, generate the tarball
+	clean, clean all the files generated
